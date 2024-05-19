@@ -1,3 +1,6 @@
+user.js
+
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
@@ -24,3 +27,22 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
 };
 
 module.exports = mongoose.model('User', userSchema);
+
+
+
+property js
+
+const mongoose = require('mongoose');
+
+const propertySchema = new mongoose.Schema({
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  location: { type: String, required: true },
+  price: { type: Number, required: true },
+  size: { type: String, required: true },
+  amenities: [String],
+  likes: { type: Number, default: 0 },
+});
+
+module.exports = mongoose.model('Property', propertySchema);
+
+
